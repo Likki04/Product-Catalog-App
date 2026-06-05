@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Playfair Display", serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A0A0B;
+  color: #F5F0E8;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0B;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A84C;
+  border-radius: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: #C9A84C33;
+  color: #F5F0E8;
+}
+
+/* Noise texture overlay */
+.noise::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.15;
+}
+
+/* Gold gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #C9A84C 0%, #E8C878 50%, #C9A84C 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Shimmer loading */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Card hover border glow */
+.card-glow {
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.3), 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
+}
+
+/* Input focus */
+.input-field {
+  @apply w-full bg-obsidian-3 border border-white/10 rounded-none px-4 py-3 text-ivory font-body text-sm outline-none transition-all duration-200;
+}
+.input-field:focus {
+  border-color: rgba(201, 168, 76, 0.6);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.08);
+}
+.input-field::placeholder {
+  color: rgba(245, 240, 232, 0.25);
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-gold text-obsidian font-body font-medium text-sm tracking-wider uppercase px-8 py-3 transition-all duration-200;
+}
+.btn-primary:hover {
+  @apply bg-gold-2;
+  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.25);
+}
+.btn-secondary {
+  @apply border border-white/15 text-ivory/70 font-body font-medium text-sm tracking-wider uppercase px-8 py-3 transition-all duration-200;
+}
+.btn-secondary:hover {
+  @apply border-white/30 text-ivory;
+}
+.btn-danger {
+  @apply border border-red-800/50 text-red-400 font-body font-medium text-sm tracking-wider uppercase px-8 py-3 transition-all duration-200;
+}
+.btn-danger:hover {
+  @apply bg-red-950 border-red-700;
+}
+
+/* Category pill */
+.category-pill {
+  @apply font-mono text-xs tracking-widest uppercase px-3 py-1 border;
+}
+
+/* Stagger animation helper */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+.stagger-7 { animation-delay: 0.35s; }
+.stagger-8 { animation-delay: 0.4s; }
